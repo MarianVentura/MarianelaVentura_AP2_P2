@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace = "edu.ucne.registrojugadoresmv"
+    namespace = "edu.ucne.marianelaventura_ap2_p2"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "edu.ucne.registrojugadoresmv"
+        applicationId = "edu.ucne.marianelaventura_ap2_p2"
         minSdk = 26
         targetSdk = 36
         versionCode = 1
