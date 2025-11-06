@@ -31,5 +31,17 @@ object ApiModule {
             .addInterceptor(logging)
             .build()
     }
-    // TODO: Provider de la API
+    @Provides
+    @Singleton
+    fun provideGastoApi(moshi: Moshi, okHttpClient: OkHttpClient): edu.ucne.marianelaventura_ap2_p2.data.remote.GastoApi {
+        return retrofit2.Retrofit.Builder()
+            .baseUrl("https://gestionhuacalesapi.azurewebsites.net/")
+            .addConverterFactory(retrofit2.converter.moshi.MoshiConverterFactory.create(moshi))
+            .client(okHttpClient)
+            .build()
+            .create(edu.ucne.marianelaventura_ap2_p2.data.remote.GastoApi::class.java)
+    }
 }
+
+
+
