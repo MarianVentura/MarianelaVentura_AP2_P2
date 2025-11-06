@@ -1,6 +1,6 @@
 package edu.ucne.marianelaventura_ap2_p2.data.remote
 
-class Resource {
+
     sealed class Resource<T>(
         val data: T? = null,
         val message: String? = null
@@ -9,5 +9,4 @@ class Resource {
         class Success<T>(data: T?) : Resource<T>(data)
         class Error<T>(message: String, data: T? = null) : Resource<T>(data, message)
     }
-}
 

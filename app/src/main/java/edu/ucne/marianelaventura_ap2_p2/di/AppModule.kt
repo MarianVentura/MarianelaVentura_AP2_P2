@@ -1,4 +1,4 @@
-package edu.ucne.marianvelaventura_ap2_p2.di
+package edu.ucne.marianelaventura_ap2_p2.di
 
 import android.content.Context
 import androidx.room.Room
@@ -7,18 +7,24 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import edu.ucne.marianelaventura_ap2_p2.data.local.database.GastoDatabase
 import javax.inject.Singleton
 
-@InstallIn(SingletonComponent::class)
 @Module
+@InstallIn(SingletonComponent::class)
 object AppModule {
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext appContext: Context) =
-        Room.databaseBuilder(
+    fun provideGastoDatabase(@ApplicationContext appContext: Context): GastoDatabase {
+        return Room.databaseBuilder(
             appContext,
-            AppDatabase::class.java,
+            GastoDatabase::class.java,
             "SegundoParcial.db"
         ).fallbackToDestructiveMigration()
             .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideGastoDao(database: GastoDatabase) = database.gastoDao()
 }
